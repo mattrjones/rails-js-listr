@@ -12,8 +12,9 @@ class List {
         listsDiv.innerHTML += 
         `
         <ul>
-        <h3>${this.name}</h3>
+        <h2>${this.name}:</h2>
         </ul>
+        <button class="delete-button" data-id=${this.id} onClick="deleteList()">Delete List</button>
         `
     }
 }

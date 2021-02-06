@@ -53,3 +53,16 @@ function listFormSubmission(){
         i.renderList();
     })
 }
+
+//delete - delete a list
+
+function deleteList(){
+    
+    let listID = parseInt(event.target.dataset.id)
+
+    fetch(`${BASE_URL}/lists/${listID}`, {
+        method: "DELETE"
+    })
+
+    setTimeout(() => {this.location.reload();}, 10)
+}
