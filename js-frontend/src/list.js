@@ -1,3 +1,10 @@
+const listFormFields = `
+    <label><strong>List Name: </strong></label><br/>
+    <input type="text" id="name" required><br/>
+    <label><strong>Description: </strong></label><br/>
+    <textarea id="description" rows="3" columns="20" required></textarea><br/>
+`;
+
 class List {
     constructor(id, name){
         this.id = id;
@@ -27,4 +34,5 @@ class List {
         //     `
         // end 
     }
+
 }

@@ -51,6 +51,8 @@ function listFormSubmission(){
     .then(list => {
         let i = new List(list.id, list.name)
         i.renderList();
+        let newDiv = document.createElement("div")
+        newDiv.setAttribute("id",i.id)
     })
 }
 
