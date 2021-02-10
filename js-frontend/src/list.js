@@ -167,3 +167,18 @@ List.prototype.listTasksHtml = function (){
 
     return (listTasks)
 }
+
+List.prototype.listHtml = fucntion(){
+
+    return `<div class="card" data-list-id="${this.id}">
+    <!-- </br>-->
+            <strong class="list-title">${this.name}</strong> <br/>
+            <strong>Description: </strong>${this.description}<br/>
+            <button class="view-tasks-list-button">View Tasks</button>
+            <button class="edit-list-button">Edit List Info</button>
+            <button class="delete-list-button">Delete</button>
+            </div>
+        </div>`
+};
+
+
