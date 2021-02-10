@@ -146,3 +146,24 @@ function addListsClickListeners(){
     })
 }
 
+function clearListsHtml(){
+    let listsIndex = document.getElementById("lists-list")
+    listsIndex.innerHTML = ''
+}
+
+List.prototype.listTasksHtml = function (){
+    let listTasks = this.tasks.map(task => {
+        let date = parseDate(task.updated_at)
+
+        return (`
+        <div class="card" data-task-id="${task.id}" >
+        <strong><i>Last Update: </i></strong>${date} <br/>
+        <strong>Task Name: </strong>${task.label} <br/>
+        
+        <button class="delete-task-button" style="background-color:red">Delete Task</button>
+        </div>
+        `)
+    }).join('')
+
+    return (listTasks)
+}
