@@ -136,3 +136,13 @@ function deleteList(){
         })
 }
 
+function addListsClickListeners(){
+    document.querySelectorAll('.edit-list-button').forEach(element => {
+        element.addEventListener("click", editList)
+    })
+
+    document.querySelectorAll('.delete-list-button').forEach(element => {
+        element.addEventListener("click", deleteList)
+    })
+}
+
