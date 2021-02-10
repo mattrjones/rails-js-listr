@@ -123,4 +123,16 @@ function editList(){
         })
 }
 
+function deleteList(){
+    let listId = this.parentElement.getAttribute('data-list-id')
+    
+    fetch(`http://localhost:3000/lists/${listId}`, {
+        method: 'DELETE'
+    })
+        .then(resp => resp.json())
+        .then(json => {
+            let selectedList = document.querySelector(`.card[data-list-id="${listId}`)
+            selectedList.remove()
+        })
+}
 
