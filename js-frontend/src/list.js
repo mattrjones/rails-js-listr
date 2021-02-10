@@ -181,4 +181,32 @@ List.prototype.listHtml = fucntion(){
         </div>`
 };
 
+List.prototype.addNewTaskButton = function(){
+    let addNewTaskButton = document.createElement('button')
+    addNewTaskButton.className = 'add-task-button'
+    addNewTaskButton.id = this.id
+    addNewTaskButton.innerText = "Add Task"
 
+    return addNewTaskButton
+}
+
+function renderListsHtml(data){
+    let listsIndex = document.getElementById("lists-list")
+
+    data.forEach((list) => {
+
+        let tasksIndexHtml = document.createElement('div')
+        tasksIndexHtml.className = 'tasks'
+        tasksIndexHtml.style.display = 'none'
+        let emptyTasksHtml = tasksIndexHtml
+        
+        let newList = new List(list)
+        tasksIndexHtml.innerHTML = newList.listItemsHtml()
+
+        listsIndex.innerHTML += newList.listHTML()
+
+        let selectedListHtml = document.querySelector(`.card[data-list-id="${newList.id}"]`)
+        selectedListHtml.append(tasksIndexHtml.childElementCount ? tasksIndexHtml : emptyTasksHtml )
+        selectedListHtml.querySelector('.items').appendChild(newList.addTaskButton())
+    });
+}
