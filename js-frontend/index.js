@@ -1,70 +1,83 @@
-document.addEventListener("DOMContentLoaded", () => {
-    createForm();
-    fetchLists();
-})
+// document.addEventListener("DOMContentLoaded", () => {
+//     createForm();
+//     fetchLists();
+// })
 
-const BASE_URL = "http://localhost:3000"
+// const BASE_URL = "http://localhost:3000"
 
-//read - fetch my lists index
+// //read - fetch my lists index
 
-function fetchLists(){
-    fetch(`${BASE_URL}/lists`)
-    .then(resp => resp.json())
-    .then(lists => {
-        for(const list of lists){
-            let i = new List(list.id, list.name)
-            i.renderList();
-        }
-    })
-}
+// function fetchLists(){
+//     fetch(`${BASE_URL}/lists`)
+//     .then(resp => resp.json())
+//     .then(lists => {
+//         for(const list of lists){
+//             let i = new List(list.id, list.name)
+//             i.renderList();
+//         }
+//     })
+// }
 
-function createForm(){
-    let listsForm = document.getElementById("lists-form")
+// function createForm(){
+//     let listsForm = document.getElementById("lists-form")
 
-    listsForm.innerHTML += 
-    `
-    <form>
-        List Name: <input type="text" id="name"><br>
-        <input type="submit" value="Create List">
-    </form>
-    `
+//     listsForm.innerHTML += 
+//     `
+//     <form>
+//         List Name: <input type="text" id="name"><br>
+//         <input type="submit" value="Create List">
+//     </form>
+//     `
 
-    listsForm.addEventListener("submit", listFormSubmission)
-}
+//     listsForm.addEventListener("submit", listFormSubmission)
+// }
 
-function listFormSubmission(){
-    debugger;
-    event.preventDefault();
-    let name = document.getElementById("name").value
+// function listFormSubmission(){
+//     debugger;
+//     event.preventDefault();
+//     let name = document.getElementById("name").value
 
-    let list = {name: name}
+//     let list = {name: name}
 
-    fetch(`${BASE_URL}/lists`, {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(list)
-    })
-    .then(resp => resp.json())
-    .then(list => {
-        let i = new List(list.id, list.name)
-        i.renderList();
-        let newDiv = document.createElement("div")
-        newDiv.setAttribute("id",i.id)
-    })
-}
+//     fetch(`${BASE_URL}/lists`, {
+//         method: "POST",
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(list)
+//     })
+//     .then(resp => resp.json())
+//     .then(list => {
+//         let i = new List(list.id, list.name)
+//         i.renderList();
+//         let newDiv = document.createElement("div")
+//         newDiv.setAttribute("id",i.id)
+//     })
+// }
 
-//delete - delete a list
+// //delete - delete a list
 
-function deleteList(){
+// function deleteList(){
     
-    let listID = parseInt(event.target.dataset.id)
+//     let listID = parseInt(event.target.dataset.id)
 
-    fetch(`${BASE_URL}/lists/${listID}`, {
-        method: "DELETE"
-    })
+//     fetch(`${BASE_URL}/lists/${listID}`, {
+//         method: "DELETE"
+//     })
 
-    setTimeout(() => {this.location.reload();}, 10)
+//     setTimeout(() => {this.location.reload();}, 10)
+// }
+
+document.addEventListener("DOMContentLoaded", () => {
+    getCategories();
+    Category.newCategoryForm()
+});
+
+function toggleHideDisplay(element) {
+    if (element.style.display === "none") {
+        element.style.display = "block"
+    } else {
+        element.style.display = "none"
+    }
 }
