@@ -57,3 +57,22 @@ function deleteTask(){
         })
 }
 
+function addTasksClickListeners(){
+    document.querySelectorAll('.view-tasks-list-button').forEach(element => {
+        element.addEventListener('click', viewListTasks)
+    })
+
+    document.querySelectorAll('.add-task-button').forEach(element => {
+        element.addEventListener('click', renderNewTaskForm)
+    })
+
+    document.querySelectorAll('.delete-task-button').forEach(element => {
+        element.addEventListener("click", deleteTask)
+    })
+}
+
+function viewListTasks() {
+    List.newListForm()
+    let listSelectedHtml = this.parentElement.querySelector('.items')
+    toggleHideDisplay(listSelectedHtml)
+}
